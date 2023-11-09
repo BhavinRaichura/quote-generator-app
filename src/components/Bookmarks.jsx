@@ -31,7 +31,7 @@ const Bookmarks = () => {
         });
     };
     
-    //return () => {
+    
       markedIds.forEach((id) => {
         if (quotesObj[id] === null || quotesObj[id] === undefined)
           fetchData(id);
@@ -39,7 +39,10 @@ const Bookmarks = () => {
           setItems((e) => [...e, quotesObj[id]]);
         }
       });
-    //};
+    
+    return ()=>{
+      setItems([]);
+    }
   }, []);
 
   console.log(" debug bookmark - quotes are not rendering " ,items)
