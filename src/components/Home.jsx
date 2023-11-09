@@ -74,11 +74,11 @@ const Home = () => {
 
             <form className=' flex justify-center ' onSubmit={handleSubmitForm}>
                 <div className=' w-56 flex flex-col'>
-                    <select className='border m-2 p-1 rounded-md ' onChange={(e) => setCategory(e.target.value)}>
-                        <option value="" ></option>
+                    <select className='border m-2 p-1 rounded-md ' onChange={(e) => setCategory(e.target.value)} placeholder='select'>
+                        <option value="" className='border-2'>Select a tag</option>
                         {
                             tags.map((tag, key)=>
-                            <option key={key} value={tag.slug}>{tag.name}</option>
+                            <option key={key} value={tag.slug} >{tag.name}</option>
                             )
                         }
                     </select>
