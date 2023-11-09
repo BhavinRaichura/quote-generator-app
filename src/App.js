@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Bookmarks from './components/Bookmarks';
+import Navbar from './components/Navbar';
+import { useDispatch } from 'react-redux';
+import { addAllQuoteId } from './redux/actions/bookmarkAction';
+
 
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    const bookmarkList =  JSON.parse(localStorage.getItem("bookmarkList")) || [];
+    dispatch(addAllQuoteId(bookmarkList));
+  },[])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar/>
+      <div className="App  my-10 py-10 ">
+        <Routes>
+          <Route path='/' element={<Home/>} />
+          <Route path='/bookmarks' element={<Bookmarks/>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
