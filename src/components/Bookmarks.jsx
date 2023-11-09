@@ -45,8 +45,6 @@ const Bookmarks = () => {
     }
   }, []);
 
-  console.log(" debug bookmark - quotes are not rendering " ,items)
-
   const handleBookmark = (id) => {
     const bookmarkIdList =
       JSON.parse(localStorage.getItem("bookmarkList")) || [];
